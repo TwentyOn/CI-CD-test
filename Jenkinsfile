@@ -21,9 +21,10 @@ pipeline {
     }
 
     stage('Build') {
-      steps {
-        echo 'сборка...'
-      }
+        agent any
+        steps {
+          echo 'сборка...'
+        }
     }
 
     stage('Deploy') {
