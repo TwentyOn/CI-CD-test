@@ -9,6 +9,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'ls -a'
+                sh 'pip install -r requirements.txt'
+                sh 'python manage.py showmigrations'
             }
         }
     }
