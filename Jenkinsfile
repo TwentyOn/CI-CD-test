@@ -1,20 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.14-alpine'
+        }
+    }
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
+                sh 'python -m manage.py showmigrations'
             }
         }
     }
