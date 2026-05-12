@@ -1,6 +1,8 @@
 pipeline {
-  agent docker {
+  agent {
+    docker {
     image 'python:3.14-alpine'
+    }
   }
   stages {
     stage('build') {
