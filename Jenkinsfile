@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        echo 'aboba'
-        sh 'python manage.py migrate'
+        echo 'building...'
+        sh 'ls'
       }
     }
 
