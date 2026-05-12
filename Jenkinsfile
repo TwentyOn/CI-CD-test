@@ -26,14 +26,6 @@ pipeline {
           }
     }
 
-    stage('Build') {
-        agent any
-        steps {
-          echo 'сборка...'
-          docker build
-        }
-    }
-
     stage('Deploy') {
         agent any
         steps {
