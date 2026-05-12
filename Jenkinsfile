@@ -1,14 +1,10 @@
 pipeline {
-  agent {
-    docker {
-    image 'python:3.14-alpine'
-
-    }
+  agent any
   }
   stages {
     stage('Test') {
       steps {
-        echo 'building...'
+        echo 'тестирование...'
         sh '''
             python -m venv .venv
             source .venv/bin/activate
@@ -21,13 +17,13 @@ pipeline {
 
     stage('Build') {
       steps {
-        echo 'building...'
+        echo 'сборка...'
       }
     }
 
     stage('Deploy') {
       steps {
-        echo 'deploying...'
+        echo 'развертывание...'
         sh '''
             ssh -i ~/.ssh/jenkins_key root@155.212.247.178
             exit
