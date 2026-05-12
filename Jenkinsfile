@@ -1,6 +1,12 @@
 pipeline {
   agent none
 
+  environment {
+    DOCKER_IMAGE = 'onec1/drf-app'
+    SERVER_IP = '155.212.247.178'
+    SERVICE_USER = 'root'
+  }
+
   stages {
     stage('Test') {
         agent {
@@ -24,6 +30,7 @@ pipeline {
         agent any
         steps {
           echo 'сборка...'
+          docker build
         }
     }
 
@@ -32,8 +39,7 @@ pipeline {
         steps {
           echo 'развертывание...'
           sh '''
-              ssh -i ~/.ssh/jenkins_key root@155.212.247.178
-              exit
+              pwd
           '''
         }
       }
