@@ -15,6 +15,6 @@ class TestTest(TestCase):
 
         response = self.client.get(url)
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
         self.assertIn('message', response.data)
         self.assertEqual(response.data['message'], 'success')
