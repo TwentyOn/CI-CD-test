@@ -35,6 +35,7 @@ pipeline {
             cd backend
             docker build -t back .
             docker run --rm --name -d mybackend back
+            docker ps
           '''
         }
       }
