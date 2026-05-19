@@ -32,7 +32,9 @@ pipeline {
         steps {
           echo 'развертывание...'
           sh '''
-              pwd
+            cd backend
+            docker build -t back .
+            docker run --rm --name mybackend back
           '''
         }
       }
