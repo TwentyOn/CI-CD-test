@@ -32,7 +32,7 @@ pipeline {
         steps {
           echo 'развертывание...'
           sh '''
-            ssh root@localhost
+            ssh alesey@localhost
             pwd
           '''
         }
