@@ -32,10 +32,8 @@ pipeline {
         steps {
           echo 'развертывание...'
           sh '''
-            cd backend
-            docker build -t back .
-            docker run -v /var/run/docker.sock:/var/run/docker.sock --rm --name mybackend -d back
-            docker ps
+            ssh localhost
+            pwd
           '''
         }
       }
