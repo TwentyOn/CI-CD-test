@@ -34,7 +34,7 @@ pipeline {
           sh '''
             cd backend
             docker build -t back .
-            docker run --rm --name mybackend back
+            docker run --rm --name -d mybackend back
           '''
         }
       }
