@@ -7,4 +7,4 @@ from rest_framework.views import APIView
 # Create your views here.
 class TestView(APIView):
     def get(self, request):
-        return Response({'message': 'success'})
+        return Response({'message': 'succeвss'})
