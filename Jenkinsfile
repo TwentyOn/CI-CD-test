@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     SERVICE_TAG = 'service'
-    DOCKER_IMAGE = 'onec1/sc_${SERVICE_TAG}'
+    DOCKER_USER = 'onec1'
     SERVER_IP = '155.212.247.178'
     SERVICE_USER = 'root'
   }
@@ -30,7 +30,7 @@ pipeline {
     stage('Deploy') {
         steps {
           echo 'развертывание...'
-          sh 'docker push ${DOCKER_IMAGE}'
+          sh 'docker push ${DOCKER_USER}/$sc_{SERVICE_TAG}'
           sh '''
             ssh -i ~/.ssh/jenkins_key root@155.212.247.178 'pwd'
           '''
