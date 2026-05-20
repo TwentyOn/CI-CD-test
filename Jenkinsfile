@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-            sh 'docker build -t si_${SERVICE_TAG} ./backend/'
+            sh 'docker build -t ${DOCKER_USER}/si_${SERVICE_TAG} ./backend/'
         }
     }
 
@@ -40,7 +40,7 @@ pipeline {
   post {
     always {
         sh 'docker stop sc_service || true'
-        sh 'docker rmi si_service || true'
+        sh 'docker rmi ${DOCKER_USER}/si_service || true'
     }
   }
 }
