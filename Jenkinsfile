@@ -1,5 +1,5 @@
 pipeline {
-  agent none
+  agent any
 
   environment {
     DOCKER_IMAGE = 'onec1/drf-app'
@@ -9,27 +9,19 @@ pipeline {
 
   stages {
     stage('Build') {
-        agent { dockerfile { dir 'backend' } }
         steps {
-            sh 'ls'
+            sh 'docker build -t service .'
         }
     }
 
     stage('Test') {
-        agent {
-            docker {
-                image 'python:3.14-alpine'
-                }
-        }
         steps {
             echo 'тестирование...'
             sh '''
-                cd backend
-                python -m venv .venv
-                source .venv/bin/activate
-                pip3 install -r requirements.txt
-                python manage.py migrate
-                python manage.py test
+                docker run --rm service
+                docker exec -it service python manage.py migrate
+                docker exec -it service python manage.py test
+                docker stop service
             '''
           }
     }
