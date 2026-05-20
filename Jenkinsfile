@@ -18,7 +18,7 @@ pipeline {
         steps {
             echo 'тестирование...'
             sh '''
-                docker run --rm service
+                docker run --rm -d service
                 docker exec -it service python manage.py migrate
                 docker exec -it service python manage.py test
                 docker stop service
