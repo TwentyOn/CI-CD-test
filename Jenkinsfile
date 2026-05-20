@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-            sh 'docker build -t service .'
+            sh 'docker build -t service ./backend/'
         }
     }
 
