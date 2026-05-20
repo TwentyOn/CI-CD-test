@@ -37,10 +37,5 @@ pipeline {
         }
       }
   }
-  post {
-    always {
-        sh 'docker stop sc_service || true'
-        sh 'docker rmi si_service || true'
-    }
-  }
+
 }
