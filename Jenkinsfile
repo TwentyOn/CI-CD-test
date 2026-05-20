@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-            sh 'docker build -t service ./backend/'
+            sh 'docker build -t si_service ./backend/'
         }
     }
 
@@ -18,10 +18,10 @@ pipeline {
         steps {
             echo 'тестирование...'
             sh '''
-                docker run --rm -d service
-                docker exec -it service python manage.py migrate
-                docker exec -it service python manage.py test
-                docker stop service
+                docker run --name sc_service --rm -d service
+                docker exec -it sc_service python manage.py migrate
+                docker exec -it sc_service python manage.py test
+                docker stop sc_service
             '''
           }
     }
