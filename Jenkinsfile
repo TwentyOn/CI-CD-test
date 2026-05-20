@@ -10,7 +10,9 @@ pipeline {
   stages {
     stage('Build') {
         steps {
+            def image = docker.build("./backend/")
             sh 'docker build -t si_service ./backend/'
+            sh 'echo ${image}'
         }
     }
 
