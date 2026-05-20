@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-            sh 'docker build -t si_service ./backend/'
+            sh 'docker build -t si_${SERVICE_TAG} ./backend/'
         }
     }
 
