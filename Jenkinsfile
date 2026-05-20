@@ -33,8 +33,8 @@ pipeline {
           sh 'docker push ${DOCKER_USER}/si_${SERVICE_TAG}:latest'
           sh '''
             ssh -i ~/.ssh/jenkins_key root@155.212.247.178 << EOF
-            pwd
-            ls
+            docker pull ${DOCKER_USER}/si_${SERVICE_TAG}
+            docker run --name service -p 8000:8000 ${DOCKER_USER}/si_${SERVICE_TAG}
           '''
         }
       }
