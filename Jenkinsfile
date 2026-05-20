@@ -27,9 +27,9 @@ pipeline {
     }
 
     stage('Deploy') {
-        agent any
         steps {
           echo 'развертывание...'
+          echo ${DOCKER_IMAGE}
           sh '''
             ssh -i ~/.ssh/jenkins_key root@155.212.247.178 'pwd'
           '''
