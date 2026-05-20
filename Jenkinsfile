@@ -38,8 +38,8 @@ pipeline {
   }
   post {
     always {
-        docker stop sc_service
-        docker rmi si_service
+        sh 'docker stop sc_service'
+        sh 'docker rmi si_service'
     }
   }
 }
