@@ -19,7 +19,7 @@ pipeline {
         steps {
             echo 'тестирование...'
             sh '''
-                docker run --name sc_${SERVICE_TAG} --rm -d si_${SERVICE_TAG}
+                docker run --name sc_${SERVICE_TAG} --rm -d ${DOCKER_USER}/si_${SERVICE_TAG}
                 docker exec sc_${SERVICE_TAG} python manage.py migrate
                 docker exec sc_${SERVICE_TAG} python manage.py test
                 docker stop sc_${SERVICE_TAG}
