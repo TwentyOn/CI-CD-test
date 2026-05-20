@@ -32,8 +32,7 @@ pipeline {
         steps {
           echo 'развертывание...'
           sh '''
-            ssh -i ~/.ssh/jenkins_key root@155.212.247.178
-            pwd
+            ssh -i ~/.ssh/jenkins_key root@155.212.247.178 'pwd'
           '''
         }
       }
