@@ -32,9 +32,7 @@ pipeline {
           echo 'развертывание...'
           sh 'docker push ${DOCKER_USER}/si_${SERVICE_TAG}:latest'
           sh '''
-            ssh -i ~/.ssh/jenkins_key root@155.212.247.178 '''
-                pwd
-            '''
+            ssh -i ~/.ssh/jenkins_key root@155.212.247.178 'pwd ls'
           '''
         }
       }
