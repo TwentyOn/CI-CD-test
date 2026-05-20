@@ -2,7 +2,8 @@ pipeline {
   agent any
 
   environment {
-    DOCKER_IMAGE = 'onec1/drf-app'
+    SERVICE_TAG = 'service'
+    DOCKER_IMAGE = 'onec1/sc_${SERVICE_TAG}'
     SERVER_IP = '155.212.247.178'
     SERVICE_USER = 'root'
   }
@@ -18,10 +19,10 @@ pipeline {
         steps {
             echo 'тестирование...'
             sh '''
-                docker run --name sc_service --rm -d si_service
+                docker run --name sc_service --rm -d si_${SERVICE_TAG}
                 docker exec sc_service python manage.py migrate
                 docker exec sc_service python manage.py test
-                docker stop sc_service
+                docker stop sc_${SERVICE_TAG}
             '''
           }
     }
