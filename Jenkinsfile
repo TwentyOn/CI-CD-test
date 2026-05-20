@@ -3,6 +3,7 @@ pipeline {
 
   environment {
     DOCKER_IMAGE = 'onec1/drf-app'
+    DOCKER_C = credentials('1faf5c61-757e-49b7-91d2-b4e40fc622da')
     SERVER_IP = '155.212.247.178'
     SERVICE_USER = 'root'
   }
@@ -10,9 +11,8 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-            def image = docker.build("./backend/")
+            sh 'echo ${DOCKER_C}'
             sh 'docker build -t si_service ./backend/'
-            sh 'echo ${image}'
         }
     }
 
