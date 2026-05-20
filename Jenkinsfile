@@ -9,7 +9,7 @@ pipeline {
 
   stages {
     stage('Build') {
-        agent { dockerfile true }
+        agent { dockerfile { dir 'backend' } }
         steps {
             sh 'pwd'
         }
