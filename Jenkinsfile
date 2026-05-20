@@ -30,12 +30,17 @@ pipeline {
     stage('Deploy') {
         steps {
           echo 'развертывание...'
-          sh 'docker push ${DOCKER_USER}/sc_${SERVICE_TAG}'
+          sh 'docker push ${DOCKER_USER}/si_${SERVICE_TAG}'
           sh '''
             ssh -i ~/.ssh/jenkins_key root@155.212.247.178 'pwd'
           '''
         }
       }
   }
-
+  post {
+    always {
+        sh 'docker stop sc_service || true'
+        sh 'docker rmi si_service || true'
+    }
+  }
 }
