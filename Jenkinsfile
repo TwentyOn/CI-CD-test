@@ -11,7 +11,7 @@ pipeline {
     stage('Build') {
         agent { dockerfile { dir 'backend' } }
         steps {
-            sh 'docker ps -a'
+            sh 'ls'
         }
     }
 
