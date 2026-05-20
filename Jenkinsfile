@@ -36,4 +36,10 @@ pipeline {
         }
       }
   }
+  post {
+    always {
+        docker stop sc_service
+        docker rmi si_service
+    }
+  }
 }
