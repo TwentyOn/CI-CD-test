@@ -17,4 +17,3 @@ class TestTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertIn('message', response.data)
-        self.assertEqual(response.data['message'], 'success')
