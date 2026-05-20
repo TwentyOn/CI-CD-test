@@ -10,7 +10,6 @@ pipeline {
   stages {
     stage('Build') {
         steps {
-            sh 'echo ${DOCKER_C}'
             sh 'docker build -t si_service ./backend/'
         }
     }
